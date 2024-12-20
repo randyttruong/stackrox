@@ -1,32 +1,40 @@
 package env
 
 var (
+	ClientForceHTTP1EnvDefault            = false
+	DirectGRPCEnvDefault                  = false
+	InsecureClientEnvDefault              = false
+	InsecureClientSkipTLSVerifyEnvDefault = false
+	NoColorEnvDefault                     = false
+	PlaintextEnvDefault                   = false
+	UseCurrentKubeContextDefault          = false
+
 	// CACertFileEnv allows to pass a custom CA certificate file (path to a certificate file in PEM format).
 	CACertFileEnv = RegisterSetting("ROX_CA_CERT_FILE")
 
 	// ClientForceHTTP1Env configures the use of HTTP/1 for all connections (advanced; only use if you encounter connection issues).
-	ClientForceHTTP1Env = RegisterBooleanSetting("ROX_CLIENT_FORCE_HTTP1", false)
+	ClientForceHTTP1Env = RegisterBooleanSetting("ROX_CLIENT_FORCE_HTTP1", ClientForceHTTP1EnvDefault)
 
 	// DirectGRPCEnv configures the use of direct gRPC (advanced; only use if you encounter connection issues).
-	DirectGRPCEnv = RegisterBooleanSetting("ROX_DIRECT_GRPC_CLIENT", false)
+	DirectGRPCEnv = RegisterBooleanSetting("ROX_DIRECT_GRPC_CLIENT", DirectGRPCEnvDefault)
 
 	// EndpointEnv specifies the central endpoint to use for commandline operations.
 	EndpointEnv = RegisterSetting("ROX_ENDPOINT")
 
 	// InsecureClientEnv enables insecure client connection options (DANGEROUS, USE WITH CAUTION).
-	InsecureClientEnv = RegisterBooleanSetting("ROX_INSECURE_CLIENT", false)
+	InsecureClientEnv = RegisterBooleanSetting("ROX_INSECURE_CLIENT", InsecureClientEnvDefault)
 
 	// InsecureClientSkipTLSVerifyEnv allows commandline clients to skip the TLS certificate validation.
-	InsecureClientSkipTLSVerifyEnv = RegisterBooleanSetting("ROX_INSECURE_CLIENT_SKIP_TLS_VERIFY", false)
+	InsecureClientSkipTLSVerifyEnv = RegisterBooleanSetting("ROX_INSECURE_CLIENT_SKIP_TLS_VERIFY", InsecureClientSkipTLSVerifyEnvDefault)
 
 	// NoColorEnv disables commandline color output.
-	NoColorEnv = RegisterBooleanSetting("ROX_NO_COLOR", false)
+	NoColorEnv = RegisterBooleanSetting("ROX_NO_COLOR", NoColorEnvDefault)
 
 	// PasswordEnv specifies the central admin password to use for commandline operations.
 	PasswordEnv = RegisterSetting("ROX_ADMIN_PASSWORD")
 
 	// PlaintextEnv specifies whether the commandline operations should communicate over unencrypted channesl.
-	PlaintextEnv = RegisterBooleanSetting("ROX_PLAINTEXT", false)
+	PlaintextEnv = RegisterBooleanSetting("ROX_PLAINTEXT", PlaintextEnvDefault)
 
 	// ServerEnv specifies the central server name to use for commandline operations.
 	ServerEnv = RegisterSetting("ROX_SERVER_NAME")
@@ -42,7 +50,7 @@ var (
 
 	// UseCurrentKubeContext instructs roxctl to use port-forwarding for central
 	// service connections in the current kubeconfig context.
-	UseCurrentKubeContext = RegisterBooleanSetting("ROX_USE_KUBECONTEXT", false)
+	UseCurrentKubeContext = RegisterBooleanSetting("ROX_USE_KUBECONTEXT", UseCurrentKubeContextDefault)
 
 	// ClientMaxRetries specifies the maximum number of times a client should retry a request.
 	ClientMaxRetries = RegisterIntegerSetting("ROX_CLIENT_MAX_RETRIES", 3)
